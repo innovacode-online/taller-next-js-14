@@ -1,4 +1,5 @@
 import { CategoryList } from "@/modules/categories";
+import { ProductList } from "@/modules/products";
 
 export default function CartPage() {
     return (
@@ -7,6 +8,8 @@ export default function CartPage() {
             <CategoryList/>
 
             {/* MENU DE PRODUCTOS */}
+            <ProductList/>
+
         </>
     );
 }
