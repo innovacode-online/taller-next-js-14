@@ -3,7 +3,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return (
         <>
             <main>
-                { children }
+                {/* PAGINA PRINCIPAL */}
+                <div>
+                    { children }
+                </div>
+
+                {/* CARRITO */}
             </main>
         </>
     );

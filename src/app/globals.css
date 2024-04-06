@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+
+    h1, h2, h3 {
+        @apply font-bold
+    }
+
+    h1 {
+        @apply text-4xl
+    }
+    
+    h2 {
+        @apply text-3xl
+    }
+
+    section {
+        @apply pt-8
+    }
+}
+
+@layer utilities {
+    .category__card {
+        @apply bg-white shadow-lg shadow-gray-400/20 rounded-3xl p-4 pb-6
+        hover:shadow-xl transition-all cursor-pointer
+    }
+
+    .category__list {
+        @apply flex gap-6
+    }
+
+}
+
+@layer components {
+    .container {
+        @apply max-w-[90%] md:max-w-[85%] xl:max-w-[80%] mx-auto
+    }
+}
