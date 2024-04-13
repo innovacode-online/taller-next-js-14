@@ -29,7 +29,7 @@
     }
 
     .category__list {
-        @apply flex gap-6
+        @apply flex gap-6 overflow-hidden overflow-x-scroll
     }
 
     .product__list {

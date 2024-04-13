@@ -1,11 +1,15 @@
 import React from 'react'
 import { CategoryCard } from '..'
+import { ModalNewCategory } from './modal-new-category/ModalNewCategory'
 
 export const CategoryList = () => {
     return (
         <section>
             <div className="container">
-                <h2 className='mb-4'>Lista de <span className='font-light'>Categorias</span></h2>
+            <div className='flex items-center justify-between mb-6'>
+                    <h2>Lista de <span className='font-light'>Categorias</span></h2>
+                    <ModalNewCategory/>
+                </div>
 
                 <ul className='category__list'>
                     {
