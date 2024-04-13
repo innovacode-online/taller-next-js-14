@@ -6,9 +6,9 @@ export const CategoryList = () => {
     return (
         <section>
             <div className="container">
-            <div className='flex items-center justify-between mb-6'>
+                <div className='flex items-center justify-between mb-6'>
                     <h2>Lista de <span className='font-light'>Categorias</span></h2>
-                    <ModalNewCategory/>
+                    <ModalNewCategory />
                 </div>
 
                 <ul className='category__list'>

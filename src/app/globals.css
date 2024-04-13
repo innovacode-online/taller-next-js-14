@@ -40,10 +40,15 @@
         @apply bg-white rounded-2xl px-6 py-8 cursor-pointer
         hover:shadow-gray-400/20 hover:shadow-xl hover:scale-[1.05] active:scale-100 transition-all 
     }
+
+    .cart__sidemenu {
+        @apply bg-white h-screen w-full px-8 pt-12 pb-8 col-span-3
+        flex flex-col justify-between
+    }
 }
 
 @layer components {
     .container {
-        @apply max-w-[90%] md:max-w-[85%] xl:max-w-[80%] mx-auto
+        @apply max-w-[95%] md:max-w-[90%] mx-auto
     }
 }
