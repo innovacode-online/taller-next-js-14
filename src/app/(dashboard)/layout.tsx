@@ -1,14 +1,23 @@
+import { Toaster } from "sonner";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <main>
-                {/* PAGINA PRINCIPAL */}
+            <main className="relative min-h-screen w-full">
+                <Toaster
+                    position='top-right'
+                    richColors
+                    closeButton
+                    style={{ position: 'absolute', margin: 0 }}
+                />
                 <div>
-                    { children }
-                </div>
+                    {/* PAGINA PRINCIPAL */}
+                    <div>
+                        {children}
+                    </div>
 
-                {/* CARRITO */}
+                    {/* CARRITO */}
+                </div>
             </main>
         </>
     );

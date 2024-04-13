@@ -1,10 +1,16 @@
 'use client'
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
+import { toast } from 'sonner';
 
 import { ModalContent, ModalHeader, ModalBody, Button, Select, Input, SelectItem } from '@nextui-org/react';
 
+interface Props {
+    onClose: () => void
+}
 
-export const ModalNewProductForm = () => {
+export const ModalNewProductForm = ({ onClose }: Props) => {
+
+    const [isLoading, setIsLoading] = useState(false);
 
     const categories = [
         {
@@ -33,6 +39,8 @@ export const ModalNewProductForm = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
+        setIsLoading(true);
+
         // OBTENER LOS DATOS DEL FORMULARIO
         const { productName, price, categoryId } = e.target as HTMLFormElement;
         const product = {
@@ -41,17 +49,23 @@ export const ModalNewProductForm = () => {
             categoryId: categoryId.value,
         }
 
+        // VALIDACION DE LOS DATOS
         if( Object.values( product ).includes('') ){
-            console.log('Error')
+            setIsLoading(false);
+            toast.warning('Todos los campos son obligatorios');
             return;
         }
 
         
-        // VALIDACION DE LOS DATOS
-
+        // PREPARAR PREVIEW DE LA IMAGEN
+        
         // TODO?: create product action
-
+        
+        
         // LIMPIAR DATOS Y CERRAR MODAL
+        setIsLoading(false);
+        onClose()
+
     }
 
     return (
@@ -94,7 +108,7 @@ export const ModalNewProductForm = () => {
                                 <Button color="danger" variant="light" onPress={onClose}>
                                     Cancelar
                                 </Button>
-                                <Button color="primary" type='submit' >
+                                <Button isLoading={ isLoading } isDisabled={ isLoading } color="primary" type='submit' >
                                     Guardar
                                 </Button>
                             </div>
