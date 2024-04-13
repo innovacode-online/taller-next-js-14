@@ -28,6 +28,10 @@
         hover:shadow-xl hover:shadow-gray-400/20 transition-all cursor-pointer
     }
 
+    .category__card--image {
+        @apply rounded-full w-[50px] h-[50px] object-cover mx-auto mb-2
+    }
+
     .category__list {
         @apply flex gap-6 overflow-hidden overflow-x-scroll
     }
@@ -39,6 +43,10 @@
     .product__card {
         @apply bg-white rounded-2xl px-6 py-8 cursor-pointer
         hover:shadow-gray-400/20 hover:shadow-xl hover:scale-[1.05] active:scale-100 transition-all 
+    }
+
+    .product__card--image {
+        @apply rounded-full w-[200px] h-[200px] object-cover mx-auto mb-4
     }
 
     .cart__sidemenu {
