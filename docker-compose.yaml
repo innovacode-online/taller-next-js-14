@@ -1,0 +1,32 @@
+services:
+  posMongoDb:
+    image: mongo
+    
+    restart: always
+
+    container_name: pos-database-mongo
+
+    ports:
+      - 27017:27017
+    
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+    volumes:
+      - ./mongo:/data/db
+
+  posPostgresDb:
+    image: postgres
+
+    container_name: pos-database-postgres
+
+    ports:
+      - 5432:5432
+    
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: postgres
+
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
