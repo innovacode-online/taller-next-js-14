@@ -1,8 +1,12 @@
 import React from 'react'
-import { CategoryCard } from '..'
+import { CategoryCard, ICategory } from '..'
 import { ModalNewCategory } from './modal-new-category/ModalNewCategory'
 
-export const CategoryList = () => {
+interface Props {
+    categories: ICategory[]
+}
+
+export const CategoryList = ({ categories }: Props) => {
     return (
         <section>
             <div className="container">
@@ -13,9 +17,11 @@ export const CategoryList = () => {
 
                 <ul className='category__list'>
                     {
-                        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(category => (
-                            <li key={category}>
-                                <CategoryCard />
+                        categories.map(category => (
+                            <li key={category.id}>
+                                <CategoryCard 
+                                    category={ category }
+                                />
                             </li>
                         ))
                     }

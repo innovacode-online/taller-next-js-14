@@ -1,7 +1,8 @@
-import { FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 import { toast } from 'sonner'
 
+import { createCategory } from '@/modules/categories';
 import { Button, Input, ModalBody, ModalContent, ModalHeader } from '@nextui-org/react'
 
 
@@ -11,19 +12,33 @@ interface Props {
 
 export const ModalNewCategoryForm = ({ onClose }: Props) => {
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [previewImage, setPreviewImage] = useState('');
+
+    const handleFile = (e: ChangeEvent<HTMLInputElement>) => {
+        const image = e.target.files![0]
+        const preview = URL.createObjectURL(image);
+        setPreviewImage(preview);
+    }
+
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
 
-        const { categoryName } = e.target as HTMLFormElement; 
+        const { categoryName, image } = e.target as HTMLFormElement; 
 
         if( categoryName.value.trim() === '' ){
             setIsLoading(false);
             toast.warning('Debe agregar un nombre')
             return;
         }
+
+        const formData = new FormData();
+        formData.append('name', categoryName.value);
+        formData.append('image', image.files[0]);
+
+        await createCategory(formData)
 
         setIsLoading(false);
         onClose();
@@ -43,9 +58,14 @@ export const ModalNewCategoryForm = ({ onClose }: Props) => {
                                 name="categoryName"
                             />
 
+                            {
+                                previewImage !== '' 
+                                && (
+                                    <img src={ previewImage } className='w-full' />
+                                )
+                            }
 
-
-                            <input type="file" name='image' />
+                            <input onChange={handleFile} type="file" name='image' />
 
                             <div className='mb-4 flex justify-end gap-4 mt-4 items-center'>
                                 <Button color="danger" variant="light" onPress={onClose}>
